@@ -1,9 +1,3 @@
-#if level > x {more directions are valid}
-#do not tell player which directions are valid
-#part of the game is exploring the map
-#valid commands: north, south, east, west, help, location, turns
-#specific number of turns per round
-
 import time
 
 def whereto():
