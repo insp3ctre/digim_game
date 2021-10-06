@@ -67,8 +67,8 @@ def round2():
 	spawn(turncount, level, roundcount, locations)
 
 def round3():
-	print("Round 3. 17 turns.")
-	turncount = 100
+	print("Blah blah something something round 3. 17 turns (still in development).")
+	turncount = 17
 	level = 3
 	locations = ["magic", "statue", "mall", "bank"]
 	roundcount = 3
