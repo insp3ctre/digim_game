@@ -1,7 +1,7 @@
 import time
 
 def whereto():
-	x = input("> ").lower()
+	x = input("> ").lower() #change to raw_input before submitting for python2
 	if "north" in x:
 		return "north"
 	elif "south" in x:
@@ -10,7 +10,7 @@ def whereto():
 		return "east"
 	elif "west" in x:
 		return "west"
-	elif "securepswd" in x:
+	elif "iamaquitter" in x:
 		print("You have decided to quit the game. Goodbye.\n\nGAME OVER.")
 		exit()
 	elif "help" in x:
@@ -19,6 +19,9 @@ def whereto():
 		return "location"
 	elif "turns" in x:
 		return "turns"
+	elif "cheatingcheatusingcheats" in x:
+		print("You are a cheating cheat using cheats. You are now on round 3.")
+		round3()
 	else:
 		print("Please enter in a valid command.")
 		return "bad"
@@ -26,17 +29,23 @@ def whereto():
 def start():
 	print("Welcome to Lover's Delight!")
 	print("This is a story about running errands for your significant other.")
-	print("\nThe valid commands are:\n\tnorth\n\tsouth\n\teast\n\twest\n\tlocation\n\tturns\n\thelp\n")
+	print("\nYou may only enter a command when '>' is present.")
+	print("\nThe valid commands are:\n\tnorth\n\tsouth\n\teast\n\twest\n\tlocation - displays useful information about your current location\n\tturns - displays how many turns you have left\n\thelp - HELP! YOU NEED SOMEBODY, HELP!")
+	print("\tiamaquitter - ???\n")
+	time.sleep(5)
+	print("\nP.S: You are expected to lose.\n")
+	time.sleep(2)
 	rounds()
 
 def help():
-	print("The valid commands are:\n\tnorth\n\tsouth\n\teast\n\twest\n\tlocation\n\tturns\n\thelp")
+	print("\nThe valid commands are:\n\tnorth\n\tsouth\n\teast\n\twest\n\tlocation - displays useful information about your current location\n\tturns - displays how many turns you have left\n\thelp - HELP! YOU NEED SOMEBODY, HELP!")
+	print("\tiamaquitter - ???\n")
 
 def round1():
-	print("Your Partner: Hey can you pick up some milk from the Grocery Store? I need some more for my strawberry jam. And I need the milk within 3 turns!")
-	time.sleep(2)
+	print("Your Partner: Hey can you pick up some milk from Trader Joe's? I need some more for my strawberry jam. And I need the milk within 3 turns!")
+	time.sleep(4)
 	print("You: Only because I love you! Be back in a jiffy...\n")
-	time.sleep(1)
+	time.sleep(2)
 	turncount = 3
 	level = 1
 	locations = ["grocery"]
@@ -44,7 +53,7 @@ def round1():
 	spawn(turncount, level, roundcount, locations)
 
 def round2():
-	print("Your Partner: Sweet thanks! This strawberry jam is looking milkier than ever!")
+	print("\nYour Partner: Sweet thanks! This strawberry jam is looking milkier than ever!")
 	time.sleep(1)
 	print(".")
 	time.sleep(1)
@@ -52,12 +61,12 @@ def round2():
 	time.sleep(1)
 	print(".")
 	time.sleep(1)
-	print("Your Partner: Oh hey babe? Do you think you could run some more errands for me? I need some money from the Bank, and can you pick up some paperwork from the School? This is really urgent, so I need this stuff within 8 turns.")
-	time.sleep(6)
+	print("Your Partner: Oh hey babe? Do you think you could run some more errands for me? I need some money from the Bank, and can you pick up some paperwork from the School? This is really urgent, so I need this stuff within 7 turns.")
+	time.sleep(8)
 	print("You: Sure! I'm a little tired, but anything for you.")
-	time.sleep(2)
+	time.sleep(4)
 	print("Your Partner: Thank you! You're a real life saver, you know?")
-	time.sleep(2)
+	time.sleep(4)
 	print("You: That's what you always say...\n")
 	time.sleep(2)
 	turncount = 7
@@ -67,8 +76,21 @@ def round2():
 	spawn(turncount, level, roundcount, locations)
 
 def round3():
-	print("Blah blah something something round 3. 17 turns (still in development).")
-	turncount = 17
+	print("\nYour Partner: See? this is why you are a real life saver!")
+	time.sleep(4)
+	print("You: Well yes, but actually no. How many errands can one person have in a single day?")
+	time.sleep(5)
+	print("Your Partner: I'm a busy person, what can I say?")
+	time.sleep(4)
+	print("You: No, I am the busy one because I am the one actually going out and doing things and stuffs.")
+	time.sleep(5)
+	print("Your Partner: Don't worry I don't have any more errands I need you to run. Why don't you go take some time for yourself? Maybe take a fun outing to that Magic Fountain, then stop by the Statue from one of your favorite TV shows, and then maybe grab some Money from the Bank, so you can go shopping at the Twin Pines Mall?")
+	time.sleep(12)
+	print("You: This sounds like errands but with extra steps. But sure. I'll do it. See you in 18 turns. Time for some me time...\n\n")
+	time.sleep(2)	
+
+	turncount = 18
+
 	level = 3
 	locations = ["magic", "statue", "mall", "bank"]
 	roundcount = 3
@@ -82,7 +104,7 @@ def spawn(turncount, level, roundcount, locations):
 	while turncount > 0:
 		x = whereto()
 		if "location" in x:
-			print("You are at Spawn.")
+			print("How much Spawn could a Spawning Spawn Spawn if a Spawning Spawn could Spawn Spawn?")
 		elif "north" in x:
 			turncount -= 1
 			open_park(turncount, level, roundcount, locations)
@@ -110,7 +132,7 @@ def spawn(turncount, level, roundcount, locations):
 			continue
 	if turncount < 0:
 		return
-	print("You ran out of turns at Spawn.\n\nGAME OVER.")
+	print("You ran out of turns at Spawn. Pathetic.\n\nGAME OVER.")
 	exit()
 
 def open_park(turncount, level, roundcount, locations):
@@ -125,7 +147,7 @@ def open_park(turncount, level, roundcount, locations):
 	while turncount > 0:
 		x = whereto()
 		if "location" in x:
-			print("You are in an Open Park.")
+			print("You are in an Open Park. It is a Park, and it is called Open.")
 		elif "north" in x:
 			turncount -= 1
 			bank(turncount, level, roundcount, locations)
@@ -151,7 +173,7 @@ def open_park(turncount, level, roundcount, locations):
 			continue	
 	if turncount < 0:
 		return
-	print("You ran out of turns at the Open Park.\n\nGAME OVER.")
+	print("You ran out of turns at the Open Park. Oh well.\n\nGAME OVER.")
 	exit()
 
 def bank(turncount, level, roundcount, locations):
@@ -166,7 +188,7 @@ def bank(turncount, level, roundcount, locations):
 	while turncount > 0:
 		x = whereto()
 		if "location" in x:
-			print("You are at the Bank.")
+			print("You are at the Bank. They have money here.")
 		elif "north" in x:
 			if level >= 3:	
 				print("You are trying to go into Clayton Ravine. You would need a train to be able to fall into here...")
@@ -189,7 +211,7 @@ def bank(turncount, level, roundcount, locations):
 			continue
 	if turncount < 0:
 		return
-	print("You ran out of turns at the Bank.\n\nGAME OVER.")
+	print("You ran out of turns at the Bank. Maybe you can ask them for a loan.\n\nGAME OVER.")
 	exit()
 
 def road1(turncount, level, roundcount, locations):
@@ -231,22 +253,22 @@ def road1(turncount, level, roundcount, locations):
 			continue
 	if turncount < 0:
 		return
-	print("You ran out of turns on the Road.\n\nGAME OVER.")
+	print("You ran out of turns on a Road. Such a sad way to go.\n\nGAME OVER.")
 	exit()
 
 def grocery(turncount, level, roundcount, locations):
 	if "grocery" in locations:
 		locations.remove("grocery")
-		print("You made it to the Grocery Store!")
+		print("You made it to Trader Joe's!")
 	else:
-		print("Grocery Store")
+		print("Trader Joe's")
 	if roundOver(locations):
 		roundcount += 1
 		rounds(roundcount)
 	while turncount > 0:
 		x = whereto()
 		if "location" in x:
-			print("You are at the Grocery Store.")
+			print("You are at Trader Joe's. You remember that the developer LOVES Trader Joe's!")
 		elif "north" in x:
 			if level >= 3:	
 				turncount -= 1
@@ -276,7 +298,7 @@ def grocery(turncount, level, roundcount, locations):
 			continue
 	if turncount < 0:
 		return
-	print("You ran out of turns at the Grocery Store.\n\nGAME OVER.")
+	print("You ran out of turns at Trader Joe's. On the bright side, you see lots of great deals!\n\nGAME OVER.")
 	exit()
 
 def school(turncount, level, roundcount, locations):
@@ -291,7 +313,7 @@ def school(turncount, level, roundcount, locations):
 	while turncount > 0:
 		x = whereto()
 		if "location" in x:
-			print("You are at the School.")
+			print("You are at the School. Not just any School, but the School.")
 		elif "north" in x:
 			print("You are trying to enter a construction site, but you have been told to turn around.")
 		elif "south" in x:
@@ -316,7 +338,7 @@ def school(turncount, level, roundcount, locations):
 			continue
 	if turncount < 0:
 		return
-	print("You ran out of turns at the School.\n\nGAME OVER.")
+	print("You ran out of turns at the School. Go learn something.\n\nGAME OVER.")
 	exit()
 
 def closed_park(turncount, level, roundcount, locations):
@@ -331,7 +353,7 @@ def closed_park(turncount, level, roundcount, locations):
 	while turncount > 0:
 		x = whereto()
 		if "location" in x:
-			print("You are at the Closed Park.")
+			print("You are at the Closed Park. It is a Park, and it is called Closed.")
 		elif "north" in x:
 			turncount -= 1
 			grocery(turncount, level, roundcount, locations)
@@ -355,7 +377,7 @@ def closed_park(turncount, level, roundcount, locations):
 			continue
 	if turncount < 0:
 		return
-	print("You ran out of turns at the Closed Park.\n\nGAME OVER.")
+	print("You ran out of turns at the Closed Park. Oh well.\n\nGAME OVER.")
 	exit()
 
 def owr_w(turncount, level, roundcount, locations):
@@ -446,8 +468,8 @@ def owr_e(turncount, level, roundcount, locations):
 				time.sleep(2)
 				print("You: Soft locked. I can't go anywhere. I'm on a One Way Road heading East, but there is no East.")
 				time.sleep(3)
-				print("Your Partner: Explain this like I'm five.")
-				time.sleep(2)
+				print("Your Partner: Babe you aren't making any sense right now. Are you okay?")
+				time.sleep(3)
 				print("You: I cannot progress further without restarting. Hasta la vista, baby.\n\nGAME OVER.")
 				exit()
 		elif "west" in x:
@@ -599,7 +621,7 @@ def beach1(turncount, level, roundcount, locations):
 def mall(turncount, level, roundcount, locations):
 	if "mall" in locations:
 		locations.remove("mall")
-		print("You made it to the Mall!")
+		print("You made it to Twin Pines Mall!")
 	else:
 		print("Twin Pines Mall")
 	if roundOver(locations):
@@ -701,7 +723,7 @@ def magic(turncount, level, roundcount, locations):
 			else:
 				print("You have not unlocked this part of the map yet!")
 		elif "south" in x:
-			turncoung -= 1
+			turncount -= 1
 			grocery(turncount, level, roundcount, locations)
 		elif "east" in x:
 			turncount -= 1
@@ -777,7 +799,7 @@ def road3(turncount, level, roundcount, locations):
 		elif "south" in x:
 			if level >= 4:
 				print("no")
-				# turncoung -= 1
+				# turncount -= 1
 				# #insert location here
 			else:
 				print("You have not unlocked this part of the map yet!")
@@ -866,7 +888,7 @@ def roundOver(locations):
 	return len(locations) == 0
 
 def winnerwinnerchickendinner():
-	print("Huzah! You win.\n\nGAME OVER.")
+	print("Huzah! You win. Or you have at least beaten all implemented levels.\n\nGAME OVER.")
 	exit()
 
 start()
