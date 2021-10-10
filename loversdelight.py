@@ -1,7 +1,7 @@
 import time
 
 def whereto():
-	x = input("> ").lower() #change to raw_input before submitting for python2
+	x = input("> ").lower()
 	if "north" in x:
 		return "north"
 	elif "south" in x:
@@ -20,8 +20,8 @@ def whereto():
 	elif "turns" in x:
 		return "turns"
 	elif "cheatingcheatusingcheats" in x:
-		print("You are a cheating cheat using cheats. You are now on round 3.")
-		round3()
+		print("You are a cheating cheat using cheats. You are now on round 4.")
+		round4()
 	else:
 		print("Please enter in a valid command.")
 		return "bad"
@@ -84,16 +84,30 @@ def round3():
 	time.sleep(4)
 	print("You: No, I am the busy one because I am the one actually going out and doing things and stuffs.")
 	time.sleep(5)
-	print("Your Partner: Don't worry I don't have any more errands I need you to run. Why don't you go take some time for yourself? Maybe take a fun outing to that Magic Fountain, then stop by the Statue from one of your favorite TV shows, and then maybe grab some Money from the Bank, so you can go shopping at the Twin Pines Mall?")
+	print("Your Partner: Don't worry I don't have any more errands I need you to run. Why don't you go take some time for yourself? Maybe take a fun outing to that Magic Fountain, then stop by the Statue from one of your favorite TV shows, and then maybe grab some money from the Bank, so you can go shopping at the Twin Pines Mall?")
 	time.sleep(12)
-	print("You: This sounds like errands but with extra steps. But sure. I'll do it. See you in 18 turns. Time for some me time...\n\n")
-	time.sleep(2)	
-
+	print("You: This sounds like errands but with extra steps. But sure. I'll do it. See you in 18 turns. Time for some me time...\n")
+	time.sleep(2)
 	turncount = 18
-
 	level = 3
 	locations = ["magic", "statue", "mall", "bank"]
 	roundcount = 3
+	spawn(turncount, level, roundcount, locations)
+
+def round4():
+	print("\nYour Partner: Feeling better?")
+	time.sleep(4)
+	print("You: Yeah. That helped a lot. Thanks.")
+	time.sleep(4)
+	print("Your Partner: Great! Well now it's boss battle time.")
+	time.sleep(4)
+	print("You: OH COME ON!")
+	time.sleep(3)
+	print("Your Partner: Delorean Dealership, Hover Conversion Shop, Yacht Rock, Developer's House, Mirror Room, Arcade, Caesar's Palace, and THE Bar. This is what you get for marrying me. NOW DO MY BIDDING, PEASANT!...")
+	turncount = 25
+	level = 4
+	locations = ["delorean", "hover", "rock", "dev", "mirror", "arcade", "casino", "bar"]
+	roundcount = 4
 	spawn(turncount, level, roundcount, locations)
 
 def spawn(turncount, level, roundcount, locations):
@@ -420,9 +434,8 @@ def road2(turncount, level, roundcount, locations):
 			print("You are on a Road. Thrilling.")
 		elif "north" in x:
 			if level >= 4:
-				print("no")
-				# turncount -= 1
-				# #insert location here
+				turncount -= 1
+				endofroad(turncount, level, roundcount, locations)
 			else:
 				print("You have not unlocked this part of the map yet!")
 		elif "south" in x:
@@ -458,9 +471,8 @@ def owr_e(turncount, level, roundcount, locations):
 			print("You cannot go South on a One Way Road heading East.")
 		elif "east" in x:
 			if level >= 4:
-				print("no")
-				# turncount -= 1
-				# #insert location here
+				turncount -= 1
+				delorean(turncount, level, roundcount, locations)
 			else:
 				print("You: *on phone* So awkward situation. I'm soft locked.")
 				time.sleep(2)
@@ -599,9 +611,8 @@ def beach1(turncount, level, roundcount, locations):
 			road4(turncount, level, roundcount, locations)
 		elif "east" in x:
 			if level >= 4:
-				print("no")
-				# turncount -= 1
-				# highway2(turncount, level, roundcount, locations)
+				turncount -= 1
+				ocean2(turncount, level, roundcount, locations)
 			else:
 				print("You have not unlocked this part of the may yet!")
 		elif "west" in x:
@@ -636,16 +647,14 @@ def mall(turncount, level, roundcount, locations):
 			owr_e(turncount, level, roundcount, locations)
 		elif "south" in x:
 			if level >= 4:
-				print("no")
-				# turncount -= 1
-				# #insert location here
+				turncount -= 1
+				road8(turncount, level, roundcount, locations)
 			else:
 				print("You have not unlocked this part of the map yet!")
 		elif "east" in x:
 			if level >= 4:
-				print("no")
-				# turncount -= 1
-				# #insert location here
+				turncount -= 1
+				hover(turncount, level, roundcount, locations)
 			else:
 				print("You have not unlocked this part of the may yet!")
 		elif "west" in x:
@@ -683,9 +692,8 @@ def estates(turncount, level, roundcount, locations):
 			owr_e(turncount, level, roundcount, locations)
 		elif "east" in x:
 			if level >= 4:
-				print("no")
-				# turncount -= 1
-				# #insert location here
+				turncount -= 1
+				beach4(turncount, level, roundcount, locations)
 			else:
 				print("You have not unlocked this part of the map yet!")
 		elif "west" in x:
@@ -717,9 +725,8 @@ def magic(turncount, level, roundcount, locations):
 			print("You are at a Magic Fountain. Or at least you have heard it is magical.")
 		elif "north" in x:
 			if level >= 4:
-				print("no")
-				# turncount -= 1
-				# #insert location here
+				turncount -= 1
+				beach2(turncount, level, roundcount, locations)
 			else:
 				print("You have not unlocked this part of the map yet!")
 		elif "south" in x:
@@ -764,9 +771,8 @@ def statue(turncount, level, roundcount, locations):
 			school(turncount, level, roundcount, locations)
 		elif "west" in x:
 			if level >= 4:
-				print("no")
-				# turncount -= 1
-				# #insert location here
+				turncount -= 1
+				dev(turncount, level, roundcount, locations)
 			else:
 				print("You have not unlocked this part of the map yet!")
 		elif "help" in x:
@@ -798,9 +804,8 @@ def road3(turncount, level, roundcount, locations):
 			statue(turncount, level, roundcount, locations)
 		elif "south" in x:
 			if level >= 4:
-				print("no")
-				# turncount -= 1
-				# #insert location here
+				turncount -= 1
+				road5(turncount, level, roundcount, locations)
 			else:
 				print("You have not unlocked this part of the map yet!")
 		elif "east" in x:
@@ -808,9 +813,8 @@ def road3(turncount, level, roundcount, locations):
 			highway1(turncount, level, roundcount, locations)
 		elif "west" in x:
 			if level >= 4:
-				print("no")
-				# turncount -= 1
-				# #insert location here
+				turncount -= 1
+				flowers(turncount, level, roundcount, locations)
 			else:
 				print("You have not unlocked this part of the map yet!")
 		elif "help" in x:
@@ -845,9 +849,8 @@ def road4(turncount, level, roundcount, locations):
 			estates(turncount, level, roundcount, locations)
 		elif "east" in x:
 			if level >= 4:
-				print("no")
-				# turncount -= 1
-				# #insert location here
+				turncount -=1
+				beach3(turncount, level, roundcount, locations)
 			else:
 				print("You have not unlocked this part of the map yet!")
 		elif "west" in x:
@@ -864,15 +867,726 @@ def road4(turncount, level, roundcount, locations):
 	print("You ran out of turns on a Road. Such a sad way to go.\n\nGAME OVER.")
 	exit()
 
-# def ocean1(turncount, level, roundcount, locations):
+def ocean1(turncount, level, roundcount, locations):
+	if "ocean1" in locations:
+		locations.remove("ocean1")
+		print("You made it to the Ocean!")
+	else:
+		print("Ocean")
+	if roundOver(locations):
+		roundcount += 1
+		rounds(roundcount)
+	while turncount > 0:
+		x = whereto()
+		if "location" in x:
+			print("You are in the Ocean. You only learned now that you knew how to swim.")
+		elif "north" in x:
+			print("The game does not exist that way!")
+		elif "south" in x:
+			turncount -= 1
+			beach1(turncount, level, roundcount, locations)
+		elif "east" in x:
+			turncount -= 1
+			rock(turncount, level, roundcount, locations)
+		elif "west" in x:
+			turncount -= 1
+			beach2(turncount, level, roundcount, locations)
+		elif "help" in x:
+			help()
+		elif "turns" in x:
+			print("You have " + str(turncount) + " turn(s) left.")
+		elif "bad" in x:
+			continue
+	if turncount < 0:
+		return
+	print("You ran out of turns in the Ocean. You are going to have fun drowning.\n\nGAME OVER.")
+	exit()
 
-# def ocean2(turncount, level, roundcount, locations):
+def ocean2(turncount, level, roundcount, locations):
+	if "ocean2" in locations:
+		locations.remove("ocean2")
+		print("You made it to the Ocean!")
+	else:
+		print("Ocean")
+	if roundOver(locations):
+		roundcount += 1
+		rounds(roundcount)
+	while turncount > 0:
+		x = whereto()
+		if "location" in x:
+			print("You are in the Ocean. Why are you in the Ocean?.")
+		elif "north" in x:
+			turncount -= 1
+			rock(turncount, level, roundcount, locations)
+		elif "south" in x:
+			turncount -= 1
+			beach3(turncount, level, roundcount, locations)
+		elif "east" in x:
+			print("The game does not exsit that way!")
+		elif "west" in x:
+			turncount -= 1
+			beach1(turncount, level, roundcount, locations)
+		elif "help" in x:
+			help()
+		elif "turns" in x:
+			print("You have " + str(turncount) + " turn(s) left.")
+		elif "bad" in x:
+			continue
+	if turncount < 0:
+		return
+	print("You ran out of turns in the Ocean. You are going to have fun drowning.\n\nGAME OVER.")
+	exit()
 
-# def rock(turncount, level, roundcount, locations):
+def beach2(turncount, level, roundcount, locations):
+	if "beach2" in locations:
+		locations.remove("beach2")
+		print("You made it to the correct part of the Beach!")
+	else:
+		print("Ocean Beach")
+	if roundOver(locations):
+		roundcount += 1
+		rounds(roundcount)
+	while turncount > 0:
+		x = whereto()
+		if "location" in x:
+			print("You are at Ocean Beach. No, it is not an ocean. It is a Beach.")
+		elif "north" in x:
+			print("The game does not exist that way!")
+		elif "south" in x:
+			turncount -= 1
+			magic(turncount, level, roundcount, locations)
+		elif "east" in x:
+			turncount -= 1
+			ocean1(turncount, level, roundcount, locations)
+		elif "west" in x:
+			print("You are trying to go into Clayton Ravine. You would need a train to be able to fall into here...")
+		elif "help" in x:
+			help()
+		elif "turns" in x:
+			print("You have " + str(turncount) + " turn(s) left.")
+		elif "bad" in x:
+			continue
+	if turncount < 0:
+		return
+	print("You ran out of turns at the Beach. At least it's sunny out.\n\nGAME OVER.")
+	exit()
 
-# def beach2(turncount, level, roundcount, locations):
+def beach3(turncount, level, roundcount, locations):
+	if "beach3" in locations:
+		locations.remove("beach3")
+		print("You made it to the correct part of the Beach!")
+	else:
+		print("Lazy Beach")
+	if roundOver(locations):
+		roundcount += 1
+		rounds(roundcount)
+	while turncount > 0:
+		x = whereto()
+		if "location" in x:
+			print("You are at Lazy Beach. The developer of the game gave it this title.")
+		elif "north" in x:
+			turncount -= 1
+			ocean2(turncount, level, roundcount, locations)
+		elif "south" in x:
+			turncount -= 1
+			beach4(turncount, level, roundcount, locations)
+		elif "east" in x:
+			print("The game does not exist that way!")
+		elif "west" in x:
+			turncount -= 1
+			road4(turncount, level, roundcount, locations)
+		elif "help" in x:
+			help()
+		elif "turns" in x:
+			print("You have " + str(turncount) + " turn(s) left.")
+		elif "bad" in x:
+			continue
+	if turncount < 0:
+		return
+	print("You ran out of turns at the Beach. At least it's sunny out.\n\nGAME OVER.")
+	exit()
 
-# def beach3(turncount, level, roundcount, locations):
+def beach4(turncount, level, roundcount, locations):
+	if "beach4" in locations:
+		locations.remove("beach4")
+		print("You made it to the correct part of the Beach!")
+	else:
+		print("Lazier Beach")
+	if roundOver(locations):
+		roundcount += 1
+		rounds(roundcount)
+	while turncount > 0:
+		x = whereto()
+		if "location" in x:
+			print("You are at Lazier Beach. The developer of the game gave it this title.")
+		elif "north" in x:
+			turncount -= 1
+			beach3(turncount, level, roundcount, locations)
+		elif "south" in x:
+			turncount -= 1
+			delorean(turncount, level, roundcount, locations)
+		elif "east" in x:
+			print("The game does not exist that way!")
+		elif "west" in x:
+			turncount -= 1
+			estates(turncount, level, roundcount, locations)
+		elif "help" in x:
+			help()
+		elif "turns" in x:
+			print("You have " + str(turncount) + " turn(s) left.")
+		elif "bad" in x:
+			continue
+	if turncount < 0:
+		return
+	print("You ran out of turns at the Beach. At least it's sunny out.\n\nGAME OVER.")
+	exit()
+
+def rock(turncount, level, roundcount, locations):
+	if "rock" in locations:
+		locations.remove("rock")
+		print("You made it to the Yacht Rock!")
+	else:
+		print("Yacht Rock")
+	if roundOver(locations):
+		roundcount += 1
+		rounds(roundcount)
+	while turncount > 0:
+		x = whereto()
+		if "location" in x:
+			print("You are at the Yacht Rock. This is the smoothest rock you have ever seen.")
+		elif "north" in x:
+			print("The game does not exist that way!")
+		elif "south" in x:
+			turncount -= 1
+			ocean2(turncount, level, roundcount, locations)
+		elif "east" in x:
+			print("The game does not exist that way!")
+		elif "west" in x:
+			turncount -= 1
+			ocean1(turncount, level, roundcount, locations)
+		elif "help" in x:
+			help()
+		elif "turns" in x:
+			print("You have " + str(turncount) + " turn(s) left.")
+		elif "bad" in x:
+			continue
+	if turncount < 0:
+		return
+	print("You ran out of turns at the Yacht Rock. Honestly, you are pretty content with living out the rest of your life with Yacht Rock.\n\nGAME OVER.")
+	exit()
+
+def arcade(turncount, level, roundcount, locations):
+	if "arcade" in locations:
+		locations.remove("arcade")
+		print("You made it to the Arcade!")
+	else:
+		print("Arcade")
+	if roundOver(locations):
+		roundcount += 1
+		rounds(roundcount)
+	while turncount > 0:
+		x = whereto()
+		if "location" in x:
+			print("You are at the Arcade. You are having the time of your life.")
+		elif "north" in x:
+			print("There is no ramp onto the Highway here.")
+		elif "south" in x:
+			print("The game does not exist that way!")
+		elif "east" in x:
+			turncount -= 1
+			road7(turncount, level, roundcount, locations)
+		elif "west" in x:
+			turncount -= 1
+			road6(turncount, level, roundcount, locations)
+		elif "help" in x:
+			help()
+		elif "turns" in x:
+			print("You have " + str(turncount) + " turn(s) left.")
+		elif "bad" in x:
+			continue
+	if turncount < 0:
+		return
+	print("You ran out of turns at the Arcade. You hear a Pacman death noise before you perish.\n\nGAME OVER.")
+	exit()
+
+def endofroad(turncount, level, roundcount, locations):
+	if "endofroad" in locations:
+		locations.remove("endofroad")
+		print("You made it to the End of the Road?")
+	else:
+		print("End of the Road")
+	if roundOver(locations):
+		roundcount += 1
+		rounds(roundcount)
+	while turncount > 0:
+		x = whereto()
+		if "location" in x:
+			print("You are at the End of the Road. This is where the Road ends. Or something.")
+		elif "north" in x:
+			print("The game does not exist that way!")
+		elif "south" in x:
+			turncount -= 1
+			road2(turncount, level, roundcount, locations)
+		elif "east" in x:
+			print("You are trying to go into Clayton Ravine. You would need a train to be able to fall into here...")
+		elif "west" in x:
+			turncount -= 1
+			bar(turncount, level, roundcount, locations)
+		elif "help" in x:
+			help()
+		elif "turns" in x:
+			print("You have " + str(turncount) + " turn(s) left.")
+		elif "bad" in x:
+			continue
+	if turncount < 0:
+		return
+	print("You ran out of turns at the End of the Road. That sucks.\n\nGAME OVER.")
+	exit()
+
+def bar(turncount, level, roundcount, locations):
+	if "bar" in locations:
+		locations.remove("bar")
+		print("You made it to THE Bar")
+	else:
+		print("THE Bar")
+	if roundOver(locations):
+		roundcount += 1
+		rounds(roundcount)
+	while turncount > 0:
+		x = whereto()
+		if "location" in x:
+			print("You are on at THE Bar. Not just any Bar, but THE Bar.")
+		elif "north" in x:
+			print("The game does not exist that way!")
+		elif "south" in x:
+			turncount -= 1
+			devundev(turncount, level, roundcount, locations)
+		elif "east" in x:
+			print("You are trying to enter a construction site, but you have been told to turn around.")
+		elif "west" in x:
+			print("The game does not exist that way!")
+		elif "help" in x:
+			help()
+		elif "turns" in x:
+			print("You have " + str(turncount) + " turn(s) left.")
+		elif "bad" in x:
+			continue
+	if turncount < 0:
+		return
+	print("You ran out of turns at THE Bar. You decide to drink your sorrows away, and let's just say you drank too much.\n\nGAME OVER.")
+	exit()
+
+def casino(turncount, level, roundcount, locations):
+	if "casino" in locations:
+		locations.remove("casino")
+		print("You made it to Caesar's Palace!")
+	else:
+		print("Caesar's Palace!")
+	if roundOver(locations):
+		roundcount += 1
+		rounds(roundcount)
+	while turncount > 0:
+		x = whereto()
+		if "location" in x:
+			print("You are at Caesar's Palace. You are at a casino. You are about to lose a lot of money.")
+		elif "north" in x:
+			turncount -= 1
+			flowers(turncount, level, roundcount, locations)
+		elif "south" in x:
+			print("The game does not exist that way!")
+		elif "east" in x:
+			turncount -= 1
+			road5(turncount, level, roundcount, locations)
+		elif "west" in x:
+			print("The game does not exist that way!")
+		elif "help" in x:
+			help()
+		elif "turns" in x:
+			print("You have " + str(turncount) + " turn(s) left.")
+		elif "bad" in x:
+			continue
+	if turncount < 0:
+		return
+	print("You ran out of turns at Caesar's Palace. You discoverd gambler's fallacy.\n\nGAME OVER.")
+	exit()
+
+def delorean(turncount, level, roundcount, locations):
+	if "delorean" in locations:
+		locations.remove("delorean")
+		print("You made it to the Delorean Dealership!")
+	else:
+		print("Delorean Dealership")
+	if roundOver(locations):
+		roundcount += 1
+		rounds(roundcount)
+	while turncount > 0:
+		x = whereto()
+		if "location" in x:
+			print("You are at the Delorean Dealership. You would love to own one someday. In fact, you someday will own one.")
+		elif "north" in x:
+			turncount -= 1
+			beach4(turncount, level, roundcount, locations)
+		elif "south" in x:
+			turncount -= 1
+			hover(turncount, level, roundcount, locations)
+		elif "east" in x:
+			print("The game does not exist that way!")
+		elif "west" in x:
+			turncount -= 1
+			owr_e(turncount, level, roundcount, locations)
+		elif "help" in x:
+			help()
+		elif "turns" in x:
+			print("You have " + str(turncount) + " turn(s) left.")
+		elif "bad" in x:
+			continue
+	if turncount < 0:
+		return
+	print("You ran out of turns at the Delorean Dealership. At least you didn't attempt to sell cocaine.\n\nGAME OVER.")
+	exit()
+
+def hover(turncount, level, roundcount, locations):
+	if "hover" in locations:
+		locations.remove("hover")
+		print("You made it to the Hover Conversion Shop!")
+	else:
+		print("Hover Conversion Shop")
+	if roundOver(locations):
+		roundcount += 1
+		rounds(roundcount)
+	while turncount > 0:
+		x = whereto()
+		if "location" in x:
+			print("You are at the Hover Conversion Shop. You can get a hover conversion on your vehicle in the early 21st century.")
+		elif "north" in x:
+			turncount -= 1
+			delorean(turncount, level, roundcount, locations)
+		elif "south" in x:
+			print("You run into a wall. When you touch it, it feels like a lazy game developer.")
+		elif "east" in x:
+			print("The game does not exist that way!")
+		elif "west" in x:
+			turncount -= 1
+			mall(turncount, level, roundcount, locations)
+		elif "help" in x:
+			help()
+		elif "turns" in x:
+			print("You have " + str(turncount) + " turn(s) left.")
+		elif "bad" in x:
+			continue
+	if turncount < 0:
+		return
+	print("You ran out of turns at the Hover Conversion Shop. Maybe you can ask for a hover conversion for yourself.\n\nGAME OVER.")
+	exit()
+
+def warehouse(turncount, level, roundcount, locations):
+	if "warehouse" in locations:
+		locations.remove("warehouse")
+		print("You made it to the Warehouse?")
+	else:
+		print("Warehouse")
+	if roundOver(locations):
+		roundcount += 1
+		rounds(roundcount)
+	while turncount > 0:
+		x = whereto()
+		if "location" in x:
+			print("You are at a Warehouse. You don't know, but it is a Warehouse.")
+		elif "north" in x:
+			turncount -= 1
+			devundev(turncount, level, roundcount, locations)
+		elif "south" in x:
+			turncount -= 1
+			mirror(turncount, level, roundcount, locations)
+		elif "east" in x:
+			print("You are trying to enter a construction site, but you have been told to turn around.")
+		elif "west" in x:
+			print("The game does not exist that way!")
+		elif "help" in x:
+			help()
+		elif "turns" in x:
+			print("You have " + str(turncount) + " turn(s) left.")
+		elif "bad" in x:
+			continue
+	if turncount < 0:
+		return
+	print("You ran out of turns at a Warehouse. Houseware, warehouse.\n\nGAME OVER.")
+	exit()
+
+def dev(turncount, level, roundcount, locations):
+	if "dev" in locations:
+		locations.remove("dev")
+		print("You made it to the Developer's House!")
+	else:
+		print("Developer's House")
+	if roundOver(locations):
+		roundcount += 1
+		rounds(roundcount)
+	while turncount > 0:
+		x = whereto()
+		if "location" in x:
+			print("You are at the Developer's House. You ask him if he can make a better game, but he just smiles and waves.")
+		elif "north" in x:
+			turncount -= 1
+			mirror(turncount, level, roundcount, locations)
+		elif "south" in x:
+			turncount -= 1
+			flowers(turncount, level, roundcount, locations)
+		elif "east" in x:
+			turncount -= 1
+			statue(turncount, level, roundcount, locations)
+		elif "west" in x:
+			print("The game does not exist that way!")
+		elif "help" in x:
+			help()
+		elif "turns" in x:
+			print("You have " + str(turncount) + " turn(s) left.")
+		elif "bad" in x:
+			continue
+	if turncount < 0:
+		return
+	print("You ran out of turns at the Developer's House. This is the laziest house you have ever seen.\n\nGAME OVER.")
+	exit()
+
+def road5(turncount, level, roundcount, locations):
+	if "road5" in locations:
+		locations.remove("road5")
+		print("You made it to the Road?")
+	else:
+		print("Road")
+	if roundOver(locations):
+		roundcount += 1
+		rounds(roundcount)
+	while turncount > 0:
+		x = whereto()
+		if "location" in x:
+			print("You are on a Road. Splendid.")
+		elif "north" in x:
+			turncount -= 1
+			road3(turncount, level, roundcount, locations)
+		elif "south" in x:
+			print("The game does not exist that way!")
+		elif "east" in x:
+			turncount -= 1
+			road6(turncount, level, roundcount, locations)
+		elif "west" in x:
+			turncount -= 1
+			casino(turncount, level, roundcount, locations)
+		elif "help" in x:
+			help()
+		elif "turns" in x:
+			print("You have " + str(turncount) + " turn(s) left.")
+		elif "bad" in x:
+			continue
+	if turncount < 0:
+		return
+	print("You ran out of turns on a Road. Such a sad way to go.\n\nGAME OVER.")
+	exit()
+
+def road6(turncount, level, roundcount, locations):
+	if "road6" in locations:
+		locations.remove("road6")
+		print("You made it to the Road?")
+	else:
+		print("Road")
+	if roundOver(locations):
+		roundcount += 1
+		rounds(roundcount)
+	while turncount > 0:
+		x = whereto()
+		if "location" in x:
+			print("You are on a Road. Radical.")
+		elif "north" in x:
+			print("There is no ramp onto the Highway here.")
+		elif "south" in x:
+			print("The game does not exist that way!")
+		elif "east" in x:
+			turncount -= 1
+			arcade(turncount, level, roundcount, locations)
+		elif "west" in x:
+			turncount -= 1
+			road5(turncount, level, roundcount, locations)
+		elif "help" in x:
+			help()
+		elif "turns" in x:
+			print("You have " + str(turncount) + " turn(s) left.")
+		elif "bad" in x:
+			continue
+	if turncount < 0:
+		return
+	print("You ran out of turns on a Road. Such a sad way to go.\n\nGAME OVER.")
+	exit()
+
+def road7(turncount, level, roundcount, locations):
+	if "road7" in locations:
+		locations.remove("road7")
+		print("You made it to the Road?")
+	else:
+		print("Road")
+	if roundOver(locations):
+		roundcount += 1
+		rounds(roundcount)
+	while turncount > 0:
+		x = whereto()
+		if "location" in x:
+			print("You are on a Road. Totally tubular.")
+		elif "north" in x:
+			print("There is no ramp onto the Highway here.")
+		elif "south" in x:
+			print("The game does not exist that way!")
+		elif "east" in x:
+			turncount -= 1
+			road8(turncount, level, roundcount, locations)
+		elif "west" in x:
+			turncount -= 1
+			arcade(turncount, level, roundcount, locations)
+		elif "help" in x:
+			help()
+		elif "turns" in x:
+			print("You have " + str(turncount) + " turn(s) left.")
+		elif "bad" in x:
+			continue
+	if turncount < 0:
+		return
+	print("You ran out of turns on a Road. Such a sad way to go.\n\nGAME OVER.")
+	exit()
+
+def road8(turncount, level, roundcount, locations):
+	if "road8" in locations:
+		locations.remove("road8")
+		print("You made it to the Road?")
+	else:
+		print("Road")
+	if roundOver(locations):
+		roundcount += 1
+		rounds(roundcount)
+	while turncount > 0:
+		x = whereto()
+		if "location" in x:
+			print("You are on a Road. Radical.")
+		elif "north" in x:
+			turncount -= 1
+			mall(turncount, level, roundcount, locations)
+		elif "south" in x:
+			print("The game does not exist that way!")
+		elif "east" in x:
+			print("You run into a wall. When you touch it, it feels like a lazy game developer.")
+		elif "west" in x:
+			turncount -= 1
+			road7(turncount, level, roundcount, locations)
+		elif "help" in x:
+			help()
+		elif "turns" in x:
+			print("You have " + str(turncount) + " turn(s) left.")
+		elif "bad" in x:
+			continue
+	if turncount < 0:
+		return
+	print("You ran out of turns on a Road. Such a sad way to go.\n\nGAME OVER.")
+	exit()
+
+def flowers(turncount, level, roundcount, locations):
+	if "flowers" in locations:
+		locations.remove("flowers")
+		print("You made it to the Flower Field!")
+	else:
+		print("Flower Field")
+	if roundOver(locations):
+		roundcount += 1
+		rounds(roundcount)
+	while turncount > 0:
+		x = whereto()
+		if "location" in x:
+			print("You are at a Flower Field. Is it a Field called Flower or a Field of Flowers?")
+		elif "north" in x:
+			turncount -= 1
+			dev(turncount, level, roundcount, locations)
+		elif "south" in x:
+			turncount -= 1
+			casino(turncount, level, roundcount, locations)
+		elif "east" in x:
+			turncount -= 1
+			road3(turncount, level, roundcount, locations)
+		elif "west" in x:
+			print("The game does not exist that way!")
+		elif "help" in x:
+			help()
+		elif "turns" in x:
+			print("You have " + str(turncount) + " turn(s) left.")
+		elif "bad" in x:
+			continue
+	if turncount < 0:
+		return
+	print("You ran out of turns at the Flower Field. You think to yourself how pretty this place is.\n\nGAME OVER.")
+	exit()
+
+def devundev(turncount, level, roundcount, locations):
+	if "devundev" in locations:
+		locations.remove("devundev")
+		print("You made it to Developed Undeveloped Location.")
+	else:
+		print("Developed Undeveloped Location")
+	if roundOver(locations):
+		roundcount += 1
+		rounds(roundcount)
+	while turncount > 0:
+		x = whereto()
+		if "location" in x:
+			print("You are at the Developed Undeveloped Location. This is some meta stuff you do not understand.")
+		elif "north" in x:
+			turncount -= 1
+			bar(turncount, level, roundcount, locations)
+		elif "south" in x:
+			turncount -= 1
+			warehouse(turncount, level, roundcount, locations)
+		elif "east" in x:
+			print("You are trying to enter a construction site, but you have been told to turn around.")
+		elif "west" in x:
+			print("The game does not exist that way!")
+		elif "help" in x:
+			help()
+		elif "turns" in x:
+			print("You have " + str(turncount) + " turn(s) left.")
+		elif "bad" in x:
+			continue
+	if turncount < 0:
+		return
+	print("You ran out of turns at the Developed Undeveloped Location. The amount of meta overloads your brain.\n\nGAME OVER.")
+	exit()
+
+def mirror(turncount, level, roundcount, locations):
+	if "mirror" in locations:
+		locations.remove("mirror")
+		print("You made it to the Mirror Room!")
+	else:
+		print("Mirror Room")
+	if roundOver(locations):
+		roundcount += 1
+		rounds(roundcount)
+	while turncount > 0:
+		x = whereto()
+		if "location" in x:
+			print("You are at the Mirror Room. When you look into the Mirror, someone ugly looks back at you.")
+		elif "north" in x:
+			turncount -= 1
+			warehouse(turncount, level, roundcount, locations)
+		elif "south" in x:
+			turncount -= 1
+			dev(turncount, level, roundcount, locations)
+		elif "east" in x:
+			print("You are trying to enter a consturction site, but you have been told to turn around.")
+		elif "west" in x:
+			print("The game does not exist that way!")
+		elif "help" in x:
+			help()
+		elif "turns" in x:
+			print("You have " + str(turncount) + " turn(s) left.")
+		elif "bad" in x:
+			continue
+	if turncount < 0:
+		return
+	print("You ran out of turns at the Mirror Room. The ugliness of the person staring at you from the Mirror causes everything to stop.\n\nGAME OVER.")
+	exit()
 
 def rounds(roundcount=1):
 	if roundcount == 1:
@@ -881,6 +1595,8 @@ def rounds(roundcount=1):
 		round2()
 	elif roundcount == 3:
 		round3()
+	elif roundcount == 4:
+		round4()
 	else:
 	 	winnerwinnerchickendinner()
 
@@ -888,7 +1604,32 @@ def roundOver(locations):
 	return len(locations) == 0
 
 def winnerwinnerchickendinner():
-	print("Huzah! You win. Or you have at least beaten all implemented levels.\n\nGAME OVER.")
+	print("\nYour Partner: Wait, you've actually done it? No... this can't be possible.")
+	time.sleep(4)
+	print("You: Oh. It is.")
+	time.sleep(3)
+	print("You: You've been hit by...")
+	time.sleep(3)
+	print("You: You've been struck by...")
+	time.sleep(4)
+	print("You: An ex partner.")
+	time.sleep(4)
+	print("You snap your fingers, and your ex partner begins to turn into dust and fade away.")
+	time.sleep(4)
+	print(".")
+	time.sleep(1)
+	print(".")
+	time.sleep(1)
+	print(".")
+	time.sleep(3)
+	print("You're still here?")
+	time.sleep(4)
+	print("It's over.")
+	time.sleep(4)
+	print("Go home.")
+	time.sleep(4)
+	print("Go.")
+	time.sleep(2)
 	exit()
 
 start()
