@@ -104,7 +104,7 @@ def round4():
 	print("You: OH COME ON!")
 	time.sleep(3)
 	print("Your Partner: Delorean Dealership, Hover Conversion Shop, Yacht Rock, Developer's House, Mirror Room, Arcade, Caesar's Palace, and THE Bar. This is what you get for marrying me. NOW DO MY BIDDING, PEASANT!...")
-	turncount = 25
+	turncount = 30
 	level = 4
 	locations = ["delorean", "hover", "rock", "dev", "mirror", "arcade", "casino", "bar"]
 	roundcount = 4
